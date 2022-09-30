@@ -8,9 +8,9 @@ export const getSpeakersState = createSelector(
     (state: fromFeature.SpeakersState) => state.speakers
 );
 
-export const getSpeakers = createSelector(
+export const getSpeakersDelails = createSelector(
     getSpeakersState,
-    fromReducer.getSpeakers
+    fromReducer.getSpeakersDelails
 )
 
 export const getSpeakersIsLoading = createSelector(

@@ -7,13 +7,13 @@ import * as fromSelectors from '../selectors/speakers-details.selectors';
 
 @Injectable()
 export class SpeakersFacade {
-  speakers$ = this.store.pipe(select(fromSelectors.getSpeakers));
+  speaker$ = this.store.pipe(select(fromSelectors.getSpeakersDelails));
   error$ = this.store.select(fromSelectors.getSpeakersError);
   isLoading$ = this.store.select(fromSelectors.getSpeakersIsLoading);
 
   constructor(private store: Store<fromReducer.SpeakersState>) { }
 
-  loadSpeakers(id: string) {
+  loadSpeaker(id: string) {
     this.store.dispatch(fromActions.getSpeakers({ id }));
   }
 }

@@ -20,7 +20,7 @@ export class SpeakersEffects {
       tap(() => this.spinner.show()),
       switchMap(({id}) => {
         return this.api.getSpeakerDetails(id).pipe(
-          map((data: any) => {
+          map((data: string) => {
             return fromActions.getSpeakersSuccess({
               payload: data,
             });

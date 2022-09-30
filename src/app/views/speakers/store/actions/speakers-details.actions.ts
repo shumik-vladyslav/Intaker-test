@@ -12,7 +12,7 @@ export const getSpeakers = createAction(
 );
 export const getSpeakersSuccess = createAction(
   SpeakersActionTypes.GetSpeakersSuccess,
-  props<{ payload: any }>()
+  props<{ payload: string }>()
 );
 export const getSpeakersFailure = createAction(
   SpeakersActionTypes.GetSpeakersFailure,

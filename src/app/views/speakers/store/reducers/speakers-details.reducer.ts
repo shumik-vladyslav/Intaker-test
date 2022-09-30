@@ -3,13 +3,13 @@ import { CallState, LoadingState } from 'src/app/shared/models/call-state';
 import * as fromActions from '../actions/speakers-details.actions';
 
 export interface SpeakersState {
-  speakers: any;
+  speakersDetails: string;
   error: any;
   callState: CallState;
 }
 
 export const initialState: SpeakersState = {
-  speakers: null,
+  speakersDetails: '',
   error: null,
   callState: LoadingState.INIT,
 };
@@ -27,7 +27,7 @@ export const profileReducer = createReducer(
   })),
   on(fromActions.getSpeakersSuccess, (state, { payload }) => ({
     ...state,
-    speakers: payload,
+    speakersDetails: payload,
     callState: LoadingState.LOADED,
   }))
 );
@@ -36,8 +36,8 @@ export function reducer(state: SpeakersState | undefined, action: Action) {
   return profileReducer(state, action);
 }
 
-export const getSpeakers = (state: SpeakersState) => {
-  return state.speakers;
+export const getSpeakersDelails = (state: SpeakersState) => {
+  return state.speakersDetails;
 };
 
 export const getError = (state: SpeakersState) => {

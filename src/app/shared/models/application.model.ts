@@ -1,14 +1,27 @@
+export interface Link {
+    href: string;
+    rel: string;
+}
+
 export interface Speaker {
-    accountId?: string;
-    pageNumber?: number;
-    pageSize?: number;
-    filter?: string | undefined;
-    includeDeleted?: boolean | undefined;
-    name?: string | undefined;
-    firstName?: string | undefined;
-    lastName?: string | undefined;
-    preferredName?: string | undefined;
-    email?: string | undefined;
-    phone?: string | undefined;
-    isAccountSpeakers?: boolean | undefined;
+    name: string;
+    value: string;
+    id: string;
+}
+
+export interface SpeakerItem {
+    data: Speaker[];
+    href: string;
+    links: Link[];
+}
+
+export interface SpeakersResponse {
+    collection: {
+        href?: string;
+        items?: SpeakerItem[];
+        links?: Link[];
+        queries?: any[];
+        template?: { data: any[] };
+        version?: string;
+    }
 }

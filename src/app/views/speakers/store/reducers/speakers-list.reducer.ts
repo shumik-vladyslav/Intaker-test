@@ -1,16 +1,17 @@
 /* eslint-disable arrow-body-style */
 import { Action, createReducer, on } from '@ngrx/store';
+import { SpeakerItem, SpeakersResponse } from 'src/app/shared/models/application.model';
 import { CallState, LoadingState } from 'src/app/shared/models/call-state';
 import * as fromActions from '../actions/speakers-list.actions';
 
 export interface SpeakersListState {
-  speakersList: any;
+  speakersList: SpeakersResponse;
   callState: CallState;
   error: any;
 }
 
 export const initialState: SpeakersListState = {
-  speakersList: null,
+  speakersList: {collection: {}},
   error: null,
   callState: LoadingState.INIT,
 };
@@ -37,20 +38,14 @@ export function reducer(state: SpeakersListState | undefined, action: Action) {
   return profileReducer(state, action);
 }
 
-export const getSpeakersListPageNumber = (state: SpeakersListState) => {
-  return state.speakersList?.pageMetaData.pageNumber;
-};
-
 export const getSpeakersList = (state: SpeakersListState) => {
-  return state.speakersList?.collection?.items?.map((item: any) => item.data[0]);
-};
-
-export const getSpeakersListItems = (state: SpeakersListState) => {
-  return state.speakersList?.items;
-};
-
-export const getSpeakersTotalCount = (state: SpeakersListState) => {
-  return state.speakersList.pageMetaData.records;
+  return state.speakersList?.collection?.items?.map((item: SpeakerItem) => {
+    const obj = {
+      ...item.data[0],
+      id: item.href.split('/')[item.href.split('/').length - 1]
+    }
+    return obj;
+  });
 };
 
 export const getError = (state: SpeakersListState) => {

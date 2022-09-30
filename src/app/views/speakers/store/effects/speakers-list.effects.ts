@@ -4,6 +4,7 @@ import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, finalize, map, switchMap, tap } from 'rxjs/operators';
 import { SpinnerService } from 'src/app/core/services/spinner.service';
+import { SpeakersResponse } from 'src/app/shared/models/application.model';
 import { SpeakersService } from '../../services/speakers.service';
 import * as fromActions from '../actions/speakers-list.actions';
 
@@ -15,7 +16,7 @@ export class SpeakersListEffects {
       tap(() => this.spinner.show()),
       switchMap(() => {
         return this.api.getSpeakers().pipe(
-          map((data) => {
+          map((data: SpeakersResponse) => {
             return fromActions.getSpeakersListSuccess({
               payload: data,
             });

@@ -1,0 +1,24 @@
+
+            <p>
+              Click the "Start Recording" button to begin video recording for a few seconds.
+              You can stop recording by clicking the "Stop Recording" button. The "Download"
+              button will download the received data (although it's in a raw, unwrapped form
+              that isn't very useful).
+            </p>
+            <br />
+
+            <div [hidden]="eventType !== 0">
+              <div (click)="start()" class="button">Start Recording</div>
+            </div>
+
+            <div [hidden]="eventType !== 1">
+              <div (click)="stop()" class="button">Stop Recording</div>
+              <h2>Preview</h2>
+              <video [hidden]="eventType !== 1" #preview width="560" height="420" autoplay muted></video>
+            </div>
+
+            <div [hidden]="eventType !== 2">
+              <h2>Recording</h2>
+              <video #recording width="560" height="420" controls></video>
+              <a #downloadButton class="button"> Download </a>
+            </div>

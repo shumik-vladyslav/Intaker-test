@@ -1,4 +1,5 @@
 import { createAction, props } from '@ngrx/store';
+import { SpeakersResponse } from 'src/app/shared/models/application.model';
 
 export enum SpeakersListActionTypes {
   GetSpeakersList = '[SpeakersList] Get SpeakersList',
@@ -11,7 +12,7 @@ export const getSpeakersList = createAction(
 );
 export const getSpeakersListSuccess = createAction(
   SpeakersListActionTypes.GetSpeakersListSuccess,
-  props<{ payload: any }>()
+  props<{ payload: SpeakersResponse }>()
 );
 export const getSpeakersListFailure = createAction(
   SpeakersListActionTypes.GetSpeakersListFailure,

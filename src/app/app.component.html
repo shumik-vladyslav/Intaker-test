@@ -1,2 +1,29 @@
 <app-spinner></app-spinner>
-<!-- <router-outlet></router-outlet> -->
+<div class="pt-10">
+    <!-- header -->
+    <div class="fixed z-10 w-full top-0">
+        <div class="py-3 px-6 bg-zinc-800 relative">
+            <ng-container *ngFor="let menu of menuItems">
+                <a class="no-underline text-white mr-4 relative z-10" [routerLinkActive]="'text-indigo-400'"
+                    [routerLink]="[ menu.path ]">
+                    {{menu.name}}
+                </a>
+            </ng-container>
+            <div class="flex absolute items-center justify-center w-full h-full left-0 top-0">
+                <img src="https://s.yimg.com/rz/p/yahoo_sports_en-US_h_w_sportsv2.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="flex m-auto">
+        <!-- content -->
+        <div class="w-full p-6" [ngClass]="{'content-with-adv': advIsFixed}">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- adv Block -->
+            <div #adElement class="adv-wrap pr-6 pb-6" [ngClass]="{'avd-fixed': advIsFixed}">
+                <div *ngFor="let ad of adList" class="adv-item">
+                    <img [src]="ad.imgUrl" alt="">
+                </div>
+            </div>
+    </div>
+</div>

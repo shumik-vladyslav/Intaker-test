@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { SpinnerComponent } from './spinner.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import {CloudinaryModule} from '@cloudinary/ng';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,11 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    RouterModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),
+    BrowserAnimationsModule,
+    CloudinaryModule
   ],
   providers: [],
   entryComponents: [SpinnerComponent],

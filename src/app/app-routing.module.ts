@@ -10,6 +10,13 @@ const routes: Routes = [
         (m) => m.SpeakersModule
       )
   },
+  {
+    path: 'video',
+    loadChildren: () =>
+      import('./views/video/video.module').then(
+        (m) => m.VideoModule
+      )
+  },
 ];
 
 @NgModule({

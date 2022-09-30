@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { map } from 'rxjs';
+import { FormBuilder } from '@angular/forms';
+import { combineLatest, debounceTime, map, startWith } from 'rxjs';
+import { Speaker } from 'src/app/shared/models/application.model';
 import { SpeakersListFacade } from '../../store/facades';
 
 @Component({
@@ -9,9 +11,23 @@ import { SpeakersListFacade } from '../../store/facades';
 })
 export class SpeakersListComponent implements OnInit {
 
-  speakersList$ = this.speakersListFacade.speakersList$;
+  searchControl = this.fb.control(null);
 
-  constructor(private speakersListFacade: SpeakersListFacade) { }
+  filter$ = this.searchControl.valueChanges.pipe(debounceTime(400), startWith(''));
+
+  speakersList$ = combineLatest([this.filter$, this.speakersListFacade.speakersList$]).pipe(
+    map(([search, items]) => {
+      if (search) {
+        return items?.filter((item: Speaker) => item.value.toLowerCase().startsWith(search?.toLowerCase()))
+      }
+      return items
+    })
+  );
+
+  constructor(
+    private speakersListFacade: SpeakersListFacade,
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.speakersListFacade.loadSpeakersList()

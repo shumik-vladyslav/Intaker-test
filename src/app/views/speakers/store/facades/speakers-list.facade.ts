@@ -7,11 +7,6 @@ import * as fromSelectors from '../selectors/speakers-list.selectors';
 @Injectable()
 export class SpeakersListFacade {
   speakersList$ = this.store.select(fromSelectors.getSpeakersList);
-  speakersListItems$ = this.store.select(fromSelectors.getSpeakersListItems);
-  totalCount$ = this.store.select(fromSelectors.getSpeakersTotalCount);
-  speakersListPageNumber$ = this.store.select(
-    fromSelectors.getSpeakersListPageNumber
-  );
 
   isLoading$ = this.store.select(fromSelectors.getSpeakersListIsLoading);
   isLoaded$ = this.store.select(fromSelectors.getSpeakersListIsLoaded);

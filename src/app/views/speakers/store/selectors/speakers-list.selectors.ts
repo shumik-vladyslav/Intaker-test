@@ -13,21 +13,6 @@ export const getSpeakersList = createSelector(
     fromReducer.getSpeakersList
 )
 
-export const getSpeakersListPageNumber = createSelector(
-    getSpeakersListState,
-    fromReducer.getSpeakersListPageNumber
-)
-
-export const getSpeakersListItems = createSelector(
-    getSpeakersListState,
-    fromReducer.getSpeakersListItems
-)
-
-export const getSpeakersTotalCount = createSelector(
-    getSpeakersListState,
-    fromReducer.getSpeakersTotalCount
-)
-
 export const getSpeakersListIsLoading = createSelector(
     getSpeakersListState,
     s => s.callState === LoadingState.LOADING
