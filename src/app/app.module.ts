@@ -9,7 +9,6 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import {CloudinaryModule} from '@cloudinary/ng';
 
 @NgModule({
   declarations: [
@@ -23,8 +22,7 @@ import {CloudinaryModule} from '@cloudinary/ng';
     RouterModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot(),
-    BrowserAnimationsModule,
-    CloudinaryModule
+    BrowserAnimationsModule
   ],
   providers: [],
   entryComponents: [SpinnerComponent],
